@@ -11,3 +11,7 @@ def about(request):
 def fish_index(request):
   fishes = Fish.objects.all()
   return render(request, 'fish/index.html', { 'fishes': fishes })
+
+def fish_detail(request, fish_id):
+  fish = Fish.objects.get(id=fish_id)
+  return render(request, 'fish/detail.html', { 'fish':fish })

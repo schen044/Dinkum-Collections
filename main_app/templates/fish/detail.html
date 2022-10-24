@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Fish List</h1>
+<h1>Fish Details</h1>
 
-{% for fish in fishes %}
-  <div class="card">
-    <a href="/fish/{{ fish.id }}">
-      <div class="card-content">
+<div class="card">
+    <div class="card-content">
         <span class="card-title">{{ fish.name }}</span>
         <p>Location: {{ fish.location }}</p>
         <p>Time Active: {{ fish.time_active }}</p>
         <p>Season: {{ fish.season }}</p>
         <p>Price: <img src="https://static.wikia.nocookie.net/dinkum/images/4/42/Inv_Dinks.png" width="30" height="30" alt="Dinkum Coin">{{ fish.price }}</p>
-      </div>
-    </a>
   </div>
-{% endfor %}
+</div>
 
 {% endblock %}
