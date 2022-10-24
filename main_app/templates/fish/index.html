@@ -3,14 +3,14 @@
 
 <h1>Fish List</h1>
 
-{% for afish in fish %}
+{% for fish in fishes %}
   <div class="card">
     <div class="card-content">
-      <span class="card-title">{{ afish.name }}</span>
-      <p>Location: {{ afish.location }}</p>
-      <p>Time Active: {{ afish.time_active }}</p>
-      <p>Season: {{ afish.season }}</p>
-      <p>Price: <img src="https://static.wikia.nocookie.net/dinkum/images/4/42/Inv_Dinks.png" width="30" height="30" alt="Dinkum Coin">{{ afish.price }}</p>
+      <span class="card-title">{{ fish.name }}</span>
+      <p>Location: {{ fish.location }}</p>
+      <p>Time Active: {{ fish.time_active }}</p>
+      <p>Season: {{ fish.season }}</p>
+      <p>Price: <img src="https://static.wikia.nocookie.net/dinkum/images/4/42/Inv_Dinks.png" width="30" height="30" alt="Dinkum Coin">{{ fish.price }}</p>
     </div>
   </div>
 {% endfor %}

@@ -10,7 +10,7 @@ class Fish:  # Note that parens are optional if not inheriting from another clas
     self.season = season
     self.price = price
 
-fish = [
+fishes = [
   Fish('Anchovy', 'Southern Ocean', 'day, night', 'Fall, Winter', 4520),
   Fish('Banded Morwong', 'Northern Ocean, Southern Ocean', 'day, noon, night', 'Winter', 4320),
   Fish('Barcoo Grunter', 'Rivers, Billabongs, Mangroves', 'day, noon, night', 'Spring, Summer, Fall, Winter', 1290)
@@ -24,4 +24,4 @@ def about(request):
     return render(request, 'about.html')
 
 def fish_index(request):
-  return render(request, 'fish/index.html', { 'fish': fish })
+  return render(request, 'fish/index.html', { 'fishes': fishes })
