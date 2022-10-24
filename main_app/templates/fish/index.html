@@ -5,7 +5,7 @@
 
 {% for fish in fishes %}
   <div class="card">
-    <a href="/fish/{{ fish.id }}">
+    <a href="{% url 'detail' fish.id %}">
       <div class="card-content">
         <span class="card-title">{{ fish.name }}</span>
         <p>Location: {{ fish.location }}</p>
