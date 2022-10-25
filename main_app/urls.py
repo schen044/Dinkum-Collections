@@ -7,4 +7,5 @@ urlpatterns = [
   # route for fish index
   path('fish/', views.fish_index, name='index'),
   path('fish/<int:fish_id>', views.fish_detail, name='detail'),
+  path('fish/create/', views.FishCreate.as_view(), name='fish_create'),
 ]
