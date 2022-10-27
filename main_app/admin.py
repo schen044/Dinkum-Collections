@@ -1,7 +1,7 @@
 from django.contrib import admin
 # import your models here
-from .models import Fish, Museum
+from .models import Fish, User
 
 # Register your models here
 admin.site.register(Fish)
-admin.site.register(Museum)
+admin.site.register(User)

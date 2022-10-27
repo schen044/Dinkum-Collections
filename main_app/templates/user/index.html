@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Character List</h1>
+
+{% for user in users %}
+  <div class="card">
+    <a href="{% url 'user_detail' user.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ user.name }}</span>
+        <p>Home Location: {{ user.town }}</p>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+{% endblock %}
