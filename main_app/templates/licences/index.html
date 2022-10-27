@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Licence List</h1>
+
+{% for licence in licences %}
+    <div class="card">
+        <a href="{% url 'licences_detail' licence.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ licence.name }}</span>
+                <p>Level {{ licence.level }}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Fish, User
+from django.views.generic import ListView, DetailView
+from .models import Fish, User, Licence
 from .forms import FishForm
 
 # Create your views here.
@@ -61,3 +62,25 @@ def add_fish(request, user_id):
     new_fish.user_id = user_id
     new_fish.save()
   return redirect('user_detail', user_id=user_id)
+
+def assoc_licence(request, user_id, licence_id):
+  User.objects.get(id=user_id).licence.add(licence_id)
+  return redirect('user_detail', user_id=user_id)
+
+class LicenceList(ListView):
+  model = Licence
+
+class LicenceDetail(DetailView):
+  model = Licence
+
+class LicenceCreate(CreateView):
+  model = Licence
+  fields = '__all__'
+
+class LicenceUpdate(UpdateView):
+  model = Licence
+  fields = ['name', 'level']
+
+class LicenceDelete(DeleteView):
+  model = Licence
+  success_url = '/licences/'
