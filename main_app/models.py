@@ -2,9 +2,21 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+class Licence(models.Model):
+    name = models.CharField(max_length=100)
+    level = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('licences_detail', kwargs={'pk': self.id})
+
+
 class User(models.Model):
     name = models.CharField(max_length=100)
     town = models.CharField(max_length=100)
+    licenses = models.ManyToManyField(Licence)
 
     def __str__(self):
         return self.name
@@ -12,6 +24,7 @@ class User(models.Model):
     def get_absolute_url(self):
         return reverse('user_detail', kwargs={'user_id': self.id})
         
+
 class Fish(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
