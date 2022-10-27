@@ -26,7 +26,7 @@ class User(models.Model):
         
 
 class Fish(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     location = models.CharField(max_length=100)
     time_active = models.CharField(max_length=100)
     season = models.CharField(max_length=100)
