@@ -4,19 +4,14 @@
 {% if object %}
     <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
-  <h1>Add Fish</h1>
+  <h1>Add Character</h1>
 {% endif %}
   <form action="" method="POST">
     {% csrf_token %}
     <table>
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Add Fish" class="btn">
+    <input type="submit" value="Add Character" class="btn">
   </form>
-  <!-- Add drop down menu for user -->
-  <script>
-    const selectEl = document.getElementById('id_user');
-    M.FormSelect.init(selectEl);
-  </script>
 
 {% endblock %}

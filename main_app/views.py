@@ -25,7 +25,7 @@ class FishCreate(CreateView):
 
 class FishUpdate(UpdateView):
   model = Fish
-  fields = ['name', 'location', 'time_active', 'season', 'price']
+  fields = '__all__'
 
 class FishDelete(DeleteView):
   model = Fish
@@ -40,6 +40,10 @@ def user_detail(request, user_id):
   user = User.objects.get(id=user_id)
   fish_form = FishForm()          
   return render(request, 'user/detail.html', { 'user':user, 'fish_form': fish_form})
+
+class UserCreate(CreateView):
+  model = User
+  fields = '__all__'
 
 # add fish through user detail page
 def add_fish(request, user_id):
