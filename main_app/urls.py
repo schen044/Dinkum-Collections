@@ -17,6 +17,7 @@ urlpatterns = [
   path('user/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
   path('user/<int:pk>/delete/', views.UserDelete.as_view(), name='user_delete'),
   path('user/<int:user_id>/add_fish/', views.add_fish, name='add_fish'),
+  path('user/<int:user_id>/assoc_licence/<int:licence_id>/', views.assoc_licence, name='assoc_licence'),
   ## ROUTES FOR LICENCES
   path('licences/', views.LicenceList.as_view(), name='licences_index'),
   path('licences/<int:pk>/', views.LicenceDetail.as_view(), name='licences_detail'),

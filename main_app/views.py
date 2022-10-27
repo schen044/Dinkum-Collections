@@ -39,8 +39,10 @@ def user_index(request):
 
 def user_detail(request, user_id):
   user = User.objects.get(id=user_id)
+  id_list = user.licences.all().values_list('id')
+  licences_user_doesnt_have = Licence.objects.exclude(id__in=id_list)
   fish_form = FishForm()          
-  return render(request, 'user/detail.html', { 'user':user, 'fish_form': fish_form})
+  return render(request, 'user/detail.html', { 'user':user, 'fish_form': fish_form, 'licences': licences_user_doesnt_have })
 
 class UserCreate(CreateView):
   model = User
@@ -64,7 +66,7 @@ def add_fish(request, user_id):
   return redirect('user_detail', user_id=user_id)
 
 def assoc_licence(request, user_id, licence_id):
-  User.objects.get(id=user_id).licence.add(licence_id)
+  User.objects.get(id=user_id).licences.add(licence_id)
   return redirect('user_detail', user_id=user_id)
 
 class LicenceList(ListView):

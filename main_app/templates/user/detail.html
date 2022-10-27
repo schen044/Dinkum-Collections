@@ -4,6 +4,7 @@
 <h1>Character Details</h1>
 
 <div class="row">
+  <!-- User Details -->
   <div class="col s6">
     <div class="card">
       <div class="card-content">
@@ -16,6 +17,7 @@
       </div>
     </div>
   </div>
+  <!-- User Donated Fish -->
   <div class="col s6">
     <form action="{% url 'add_fish' user.id %}" method="POST">
       {% csrf_token %}
@@ -35,8 +37,49 @@
       </tbody>
     </table>
   </div>
+  <!-- User's Licences List -->
+  <hr>
+  <div class="row">
+    <div class="col s6">
+      <h3>{{ user.name }}'s Licences</h3>
+      {% if user.licences.count %}
+        {% for licence in user.licences.all %}
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">
+                {{ licence.name }} - level {{ licence.level }}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h5>No Licences Purchased</h5>
+      {% endif %}
+    </div>
+    <!-- Available toys will come after this line -->
+    <div class="col s6">
+      <h3>Available Licences</h3>
+      {% if licences.count %}
+        {% for licence in licences.all %}
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">
+                {{ licence.name }} - level {{ licence.level }}
+              </span>
+            </div>
+            <div class="card-action">
+              <form action="{% url 'assoc_licence' user.id licence.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h5>{{user.name}} Already Has All Licences Available</h5>
+      {% endif %}
+    </div>
 </div>
-
 
 
 {% endblock %}

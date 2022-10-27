@@ -16,7 +16,7 @@ class Licence(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=100)
     town = models.CharField(max_length=100)
-    licenses = models.ManyToManyField(Licence)
+    licences = models.ManyToManyField(Licence)
 
     def __str__(self):
         return self.name
