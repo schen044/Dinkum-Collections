@@ -33,11 +33,11 @@ class FishDelete(DeleteView):
   success_url = '/fish/'
 
 ## USER VIEWS ##
-def user_index(request):
+def users_index(request):
   users = User.objects.all()
   return render(request, 'user/index.html', { 'users': users })
 
-def user_detail(request, user_id):
+def users_detail(request, user_id):
   user = User.objects.get(id=user_id)
   id_list = user.licences.all().values_list('id')
   licences_user_doesnt_have = Licence.objects.exclude(id__in=id_list)
@@ -63,11 +63,11 @@ def add_fish(request, user_id):
     new_fish = form.save(commit=False)
     new_fish.user_id = user_id
     new_fish.save()
-  return redirect('user_detail', user_id=user_id)
+  return redirect('users_detail', user_id=user_id)
 
 def assoc_licence(request, user_id, licence_id):
   User.objects.get(id=user_id).licences.add(licence_id)
-  return redirect('user_detail', user_id=user_id)
+  return redirect('users_detail', user_id=user_id)
 
 class LicenceList(ListView):
   model = Licence

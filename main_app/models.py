@@ -22,7 +22,7 @@ class User(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('user_detail', kwargs={'user_id': self.id})
+        return reverse('users_detail', kwargs={'user_id': self.id})
         
 
 class Fish(models.Model):
