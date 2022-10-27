@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Museum List</h1>
+
+{% for museum in museums %}
+  <div class="card">
+    <a href="{% url 'museum_detail' museum.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ museum.town_name }}</span>
+        <p>Owner: {{ museum.owner }}</p>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+{% endblock %}

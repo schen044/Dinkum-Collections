@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Fish
+from .models import Fish, Museum
 
 # Create your views here.
 def home(request):
@@ -9,6 +9,7 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+## FISH VIEWS ##
 def fish_index(request):
   fishes = Fish.objects.all()
   return render(request, 'fish/index.html', { 'fishes': fishes })
@@ -28,3 +29,12 @@ class FishUpdate(UpdateView):
 class FishDelete(DeleteView):
   model = Fish
   success_url = '/fish/'
+
+## MUSEUM VIEWS ##
+def museum_index(request):
+  museums = Museum.objects.all()
+  return render(request, 'museum/index.html', { 'museums': museums })
+
+def museum_detail(request, museum_id):
+  museum = Museum.objects.get(id=museum_id)
+  return render(request, 'museum/detail.html', { 'museum':museum })
