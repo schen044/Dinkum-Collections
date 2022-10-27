@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Fish, User
+from .forms import FishForm
 
 # Create your views here.
 def home(request):
@@ -37,4 +38,14 @@ def user_index(request):
 
 def user_detail(request, user_id):
   user = User.objects.get(id=user_id)
-  return render(request, 'user/detail.html', { 'user':user })
+  fish_form = FishForm()          
+  return render(request, 'user/detail.html', { 'user':user, 'fish_form': fish_form})
+
+# add fish through user detail page
+def add_fish(request, user_id):
+  form = FishForm(request.POST)
+  if form.is_valid():
+    new_fish = form.save(commit=False)
+    new_fish.user_id = user_id
+    new_fish.save()
+  return redirect('user_detail', user_id=user_id)

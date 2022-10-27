@@ -13,4 +13,5 @@ urlpatterns = [
   ## ROUTES FOR USER ##
   path('user/', views.user_index, name='user_index'),
   path('user/<int:user_id>', views.user_detail, name='user_detail'),
+  path('user/<int:user_id>/add_fish/', views.add_fish, name='add_fish'),
 ]

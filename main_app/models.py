@@ -8,6 +8,9 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('user_detail', kwargs={'user_id': self.id})
         
 class Fish(models.Model):
     name = models.CharField(max_length=100)
@@ -19,6 +22,9 @@ class Fish(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'fish_id': self.id})

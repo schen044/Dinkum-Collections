@@ -17,6 +17,11 @@
     </div>
   </div>
   <div class="col s6">
+    <form action="{% url 'add_fish' user.id %}" method="POST">
+      {% csrf_token %}
+      {{ fish_form.as_p }}
+      <input type="submit" class="btn" value="Add Fish">
+    </form>
     <table class="striped">
       <thead>
         <tr><th>Donated Fish</th></tr>
