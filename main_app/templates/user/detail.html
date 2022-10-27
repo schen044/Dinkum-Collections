@@ -11,8 +11,8 @@
           <p>Home Location: {{ user.town }}</p>
       </div>
       <div class="card-action">
-        <a href="">Edit</a>
-        <a href="">Delete</a>
+        <a href="{% url 'user_update' user.id %}">Edit</a>
+        <a href="{% url 'user_delete' user.id %}">Delete</a>
       </div>
     </div>
   </div>

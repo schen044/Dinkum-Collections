@@ -45,6 +45,14 @@ class UserCreate(CreateView):
   model = User
   fields = '__all__'
 
+class UserUpdate(UpdateView):
+  model = User
+  fields = '__all__'
+
+class UserDelete(DeleteView):
+  model = User
+  success_url = '/user/'
+
 # add fish through user detail page
 def add_fish(request, user_id):
   form = FishForm(request.POST)
